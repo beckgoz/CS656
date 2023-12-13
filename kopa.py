@@ -1,3 +1,8 @@
+# CS656 Final Research Project
+
+# Written by Beck Gozdenovich and Daanish Quadri
+
+
 import heapq
 
 def dspa(graph, source_node, dest_node):
@@ -28,7 +33,7 @@ def dspa(graph, source_node, dest_node):
 
 
 def kopa(graph, source_node, dest_node):
-    l = 0
+    length = 0
     source_cluster = {}
     dest_cluster = {}
     ch_cluster = graph[len(graph)-1]
@@ -40,8 +45,8 @@ def kopa(graph, source_node, dest_node):
             dest_cluster = graph[c]
 
     if source_cluster == dest_cluster:
-        path, l = dspa(source_cluster, source_node, dest_node)
-        return path, l
+        path, length = dspa(source_cluster, source_node, dest_node)
+        return path, length
     
     source_ch = ''
     dest_ch = ''
@@ -61,9 +66,9 @@ def kopa(graph, source_node, dest_node):
     sc_path.pop()
     ch_path.pop()
 
-    l = sc_dist + ch_dist + dc_dist
+    length = sc_dist + ch_dist + dc_dist
     path = sc_path + ch_path + dc_path
-    return path, l
+    return path, length
 
 cluster_b = {
     'A': {'B': 2, 'C': 3, 'E': 4},
@@ -95,7 +100,7 @@ clusterheads = {
 }
 
 topology = [cluster_b, cluster_f, cluster_j, clusterheads]
-start_node = 'B'
-end_node = 'L'
+start_node = 'A'
+end_node = 'D'
 path, distance = kopa(topology, start_node, end_node)
 print(f'The optimal communication distance between {start_node} and {end_node} is {distance} over the path: {path}')
