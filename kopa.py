@@ -1,6 +1,6 @@
 # CS656 Final Research Project
 
-# Written by Beck Gozdenovich and Daanish Quadri
+# Written by Beck Gozdenovich
 
 
 import heapq
